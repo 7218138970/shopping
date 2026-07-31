@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Date? 🛍️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffd6e8,#ffeccf,#d8f3ff);
+overflow:hidden;
+}
+
+.card{
+background:rgba(255,255,255,.35);
+backdrop-filter:blur(18px);
+padding:40px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+width:340px;
+}
+
+h1{
+color:#ff3b7a;
+margin-bottom:15px;
+}
+
+p{
+color:#444;
+margin-bottom:30px;
+font-size:18px;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+button{
+padding:12px 28px;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+}
+
+#yes{
+background:#ff4f87;
+color:white;
+}
+
+#yes:hover{
+transform:scale(1.1);
+}
+
+#no{
+background:white;
+color:#ff4f87;
+position:absolute;
+}
+
+#result{
+font-size:24px;
+margin-top:20px;
+color:#ff3b7a;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>Hey!! ❤️</h1>
+<p>Will you take me shopping this weekend? 🛍️</p>
+
+<div class="buttons">
+<button id="yes">Yes ❤️</button>
+<button id="no">No 😒</button>
+</div>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+const noBtn=document.getElementById("no");
+const yesBtn=document.getElementById("yes");
+const result=document.getElementById("result");
+
+let count=0;
+
+noBtn.addEventListener("mouseover",moveButton);
+noBtn.addEventListener("click",moveButton);
+
+function moveButton(){
+
+count++;
+
+let x=Math.random()*(window.innerWidth-120);
+let y=Math.random()*(window.innerHeight-70);
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+const msgs=[
+"Hehe 😜",
+"Try Again 😂",
+"No allowed nahi hai 🤭",
+"Shopping toh karani padegi 😌",
+"Bas Yes dabao ❤️"
+];
+
+result.innerHTML=msgs[Math.min(count-1,msgs.length-1)];
+
+if(count>=5){
+noBtn.style.display="none";
+result.innerHTML="Ab sirf Yes hi bacha 😏❤️";
+}
+}
+
+yesBtn.onclick=()=>{
+document.body.innerHTML=`
+<div style="height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(135deg,#ffd6e8,#fff2cc);font-family:Poppins,sans-serif;">
+<div style="text-align:center;background:white;padding:40px;border-radius:25px;box-shadow:0 10px 30px rgba(0,0,0,.2)">
+<h1 style="color:#ff4f87;">Yayyyy!! 🥹💖</h1>
+<h2>Thank You Jaan ❤️</h2>
+<p style="margin-top:15px;font-size:20px;">
+Ab shopping pakki! 🛍️<br><br>
+Love You So Much 💕
+</p>
+</div>
+</div>`;
+}
+</script>
+
+</body>
+</html>
